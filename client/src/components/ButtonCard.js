@@ -25,7 +25,8 @@ export default class ButtonCard extends Component {
     state = {
         name: '',
         buttonIndex: '',
-        imageUrl: ''
+        imageUrl: '',
+        toManyRequests: false
     }
 
     componentDidMount () {
@@ -48,6 +49,7 @@ export default class ButtonCard extends Component {
 
                 <Sprite 
                     className="card-img-top rounded mx-auto mt-2"
+                    onError={() => this.setState({toManyRequests: true})}
                     src={this.state.imageUrl}
                 />
                 </Card>

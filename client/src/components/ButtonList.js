@@ -6,7 +6,7 @@ import ButtonCard from './ButtonCard'
 export default class ButtonList extends Component {
 
     state= {
-        url: "http://localhost:3000/users",
+        url: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20",
         button: null
     }
 
