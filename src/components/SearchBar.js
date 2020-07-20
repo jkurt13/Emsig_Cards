@@ -6,10 +6,14 @@ export default class NavBar extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-                    <lable for='cardNum'>Card Number</lable><input className='cardNum'></input>
-                    <lable for='Pattern'>Pattern</lable><input className='Pattern'></input>
-                </nav>
+                <div className='row'>
+                    <nav className="nav navbar-expand-md navbar-dark bg-dark fixed-top" style={{marginTop: 3.5 + 'em'}}>
+                        <lable for='cardNum' style={{color: 'white', marginLeft: 40 + 'em'}}>Card Number</lable>
+                        <input className='cardNum mr-5' style={{width: 200 + 'px'}}></input>
+                        <lable for='Pattern' style={{color: 'white'}}>Pattern</lable>
+                        <input className='pattern' icon="search"></input>
+                    </nav>
+                </div>
             </div>
         )
     }

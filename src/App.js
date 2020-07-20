@@ -10,8 +10,10 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <div className='container' >
       {/* <SearchBar /> */}
       <Dashboard></Dashboard>
+      </div>
     </div>
   );
 }
