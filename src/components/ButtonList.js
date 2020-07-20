@@ -28,7 +28,6 @@ export default class ButtonList extends Component {
         this.setState({button: res.data['data']});
     }
 
-   
     render() {
         return (
             <React.Fragment>
