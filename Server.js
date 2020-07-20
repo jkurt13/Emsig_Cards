@@ -10,10 +10,10 @@ const sql = require('mssql');
 
 const config = {
 
-    user: 'jakurstedt',
-    password: 'jakurstedt2020',
-    server: 'NAVSQL.ntdomain',
-    database: 'Emsig Sandbox'
+    user: '',
+    password: '',
+    server: '',
+    database: ''
 }
 
 sql.connect(config, function (err)  {

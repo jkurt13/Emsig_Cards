@@ -10,12 +10,6 @@ export default class ButtonList extends Component {
         button: null
     }
 
-    async componentDidMount() {
-        const res = await axios.get(this.state.url);
-        console.log(res.data)
-        this.setState({button: res.data['results']});
-    }
-
     renderButton= button => {
         if (this.state.button.length <= 0) {
             return <div>Loading..</div>
@@ -27,6 +21,13 @@ export default class ButtonList extends Component {
             url={button.url} 
         />
     }
+
+    async componentDidMount() {
+        const res = await axios.get(this.state.url);
+        console.log(res.data)
+        this.setState({button: res.data['results']});
+    }
+
     render() {
         return (
             <React.Fragment>
