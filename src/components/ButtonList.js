@@ -6,7 +6,7 @@ import ButtonCard from './ButtonCard'
 export default class ButtonList extends Component {
 
     state= {
-        url: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20",
+        url: "http://localhost:3000/users",
         button: null
     }
 
@@ -25,9 +25,10 @@ export default class ButtonList extends Component {
     async componentDidMount() {
         const res = await axios.get(this.state.url);
         console.log(res.data)
-        this.setState({button: res.data['results']});
+        this.setState({button: res.data['data']});
     }
 
+   
     render() {
         return (
             <React.Fragment>

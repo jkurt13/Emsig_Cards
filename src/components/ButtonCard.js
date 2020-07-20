@@ -4,8 +4,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Sprite = styled.img`
-    width: 5em;
-    height: 5em;
+    width: 10em;
+    height: 10em;
     display: none;
 `;
 
@@ -24,7 +24,7 @@ const Card = styled.div`
 export default class ButtonCard extends Component {
     state = {
         name: '',
-        buttonIndex: '',
+        buttonTag: '',
         imageUrl: '',
         toManyRequests: false
     }
@@ -32,11 +32,11 @@ export default class ButtonCard extends Component {
     componentDidMount () {
 
         const { name, url } = this.props
-        const buttonIndex = url.split("/")[url.split('/').length - 2]
-        const imageUrl = `https://github.com/jkurt13/Emsig_Cards/blob/master/src/pictures/${buttonIndex}.jpg?raw=true`
+        const buttonTag = url.split("/")[url.split('/').length - 1]
+        const imageUrl = `https://github.com/jkurt13/Emsig_Cards/blob/master/src/pictures/${buttonTag}?raw=true`
 
         this.setState({
-            buttonIndex,
+            buttonTag,
             imageUrl,
             name
         })
@@ -45,13 +45,23 @@ export default class ButtonCard extends Component {
         return (
             <div className='col-md-3 col-sm-6 mb-5'>
                 <Card className='card'>
-                 <h5 className="card-header">{this.state.buttonIndex}</h5>
+                 {/* <h5 className="card-header">{this.state.buttonIndex}</h5> */}
 
                 <Sprite 
                     className="card-img-top rounded mx-auto mt-2"
                     onError={() => this.setState({toManyRequests: true})}
                     src={this.state.imageUrl}
                 />
+                <Sprite 
+                        className="card-img-top rounded mx-auto mt-2"
+                        onLoad={() => this.setState({imageLoading: false})}
+                        onError={() => this.setState({toManyRequests: true})}
+                        src={this.state.imageUrl}
+                        style={
+                            this.state.toManyRequests ? { display: "none"} : 
+                            this.state.imageLoading ? null : {display: "block"}
+                        }
+                    />
                 <div className='card-body mx-auto'>
                         <h6 className="card-title">{this.state.name
                         .toLowerCase()
