@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import { Modal } from 'react-bootstrap'
 
 import styled from 'styled-components'
 
@@ -26,7 +27,9 @@ export default class ButtonCard extends Component {
         name: '',
         buttonTag: '',
         imageUrl: '',
-        toManyRequests: false
+        toManyRequests: false,
+        imageLoading: true,
+        show: false
     }
 
     componentDidMount () {
@@ -44,9 +47,8 @@ export default class ButtonCard extends Component {
     render() {
         return (
             <div className='col-md-3 col-sm-6 mb-5'>
-                <Card className='card'>
+                <Card className='card' onClick={() =>this.setState({show: true})}>
                  {/* <h5 className="card-header">{this.state.buttonIndex}</h5> */}
-
                 <Sprite 
                     className="card-img-top rounded mx-auto mt-2"
                     onError={() => this.setState({toManyRequests: true})}
@@ -72,6 +74,15 @@ export default class ButtonCard extends Component {
                         </h6>
                     </div>
                 </Card>
+                <Modal show={this.state.show} onHide={()=>this.setState({show: false})} animation={false} size='lg'>
+                    <Modal.Header closeButton>
+                            <h4>{this.state.name} <span style={{color: 'red'}}>MAKE THIS HALF DESCRIPTION</span></h4>
+                    </Modal.Header>
+                    <Modal.Body>
+                            <img src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
+                    </Modal.Body>
+                    
+                 </Modal>
             </div>
         )
     }
