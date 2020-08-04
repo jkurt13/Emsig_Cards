@@ -4,6 +4,9 @@ import { Modal } from 'react-bootstrap'
 
 import styled from 'styled-components'
 
+var PrintTemplate = require('react-print')
+
+
 const Sprite = styled.img`
     width: 10em;
     height: 10em;
@@ -76,14 +79,11 @@ export default class ButtonCard extends Component {
                     <h6 className="card-title">{this.state.description.slice(0, -4)}</h6>
                     </div>
                 </Card>
+                {/* <PrintTemplate> */}
                 <Modal show={this.state.show} onHide={()=>this.setState({show: false})} animation={false} size='lg'>
                     <Modal.Header closeButton>
                             <h4>Card Number: {this.state.name}</h4>
-                            <div>
-                                <form>
-                                <input type="button" value="Print this page" onClick={window.print()} />
-                                </form>
-                            </div>
+                            
                     </Modal.Header>
                     <Modal.Body>
                     <h4>Description: {this.state.description.slice(0, -4)}</h4>                   
@@ -92,6 +92,8 @@ export default class ButtonCard extends Component {
                     </Modal.Body>
                     
                  </Modal>
+                 {/* </PrintTemplate> */}
+
             </div>
         )
     }
