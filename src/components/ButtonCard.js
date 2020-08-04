@@ -25,6 +25,7 @@ const Card = styled.div`
 export default class ButtonCard extends Component {
     state = {
         name: '',
+        description: '',
         buttonTag: '',
         imageUrl: '',
         toManyRequests: false,
@@ -34,12 +35,13 @@ export default class ButtonCard extends Component {
 
     componentDidMount () {
 
-        const { name, url } = this.props
+        const { name, url, description } = this.props
         const buttonTag = url.split("/")[url.split('/').length - 1]
         const imageUrl = `https://github.com/jkurt13/Emsig_Cards/blob/master/src/pictures/${buttonTag}?raw=true`
 
         this.setState({
             buttonTag,
+            description,
             imageUrl,
             name
         })
@@ -48,7 +50,13 @@ export default class ButtonCard extends Component {
         return (
             <div className='col-md-3 col-sm-6 mb-5'>
                 <Card className='card' onClick={() =>this.setState({show: true})}>
-                 {/* <h5 className="card-header">{this.state.buttonIndex}</h5> */}
+                <h5 className="card-header">{this.state.name
+                        .toLowerCase()
+                        .split(" ")
+                        .map(
+                            letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+                            .join('')}
+                        </h5>
                 <Sprite 
                     className="card-img-top rounded mx-auto mt-2"
                     onError={() => this.setState({toManyRequests: true})}
@@ -65,20 +73,21 @@ export default class ButtonCard extends Component {
                         }
                     />
                 <div className='card-body mx-auto'>
-                        <h6 className="card-title">{this.state.name
-                        .toLowerCase()
-                        .split(" ")
-                        .map(
-                            letter => letter.charAt(0).toUpperCase() + letter.substring(1))
-                            .join('')}
-                        </h6>
+                    <h6 className="card-title">{this.state.description.slice(0, -4)}</h6>
                     </div>
                 </Card>
                 <Modal show={this.state.show} onHide={()=>this.setState({show: false})} animation={false} size='lg'>
                     <Modal.Header closeButton>
-                            <h4>{this.state.name} <span style={{color: 'red'}}>MAKE THIS HALF DESCRIPTION</span></h4>
+                            <h4>Card Number: {this.state.name}</h4>
+                            <div>
+                                <form>
+                                <input type="button" value="Print this page" onClick={window.print()} />
+                                </form>
+                            </div>
                     </Modal.Header>
                     <Modal.Body>
+                    <h4>Description: {this.state.description.slice(0, -4)}</h4>                   
+
                             <img src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
                     </Modal.Body>
                     
