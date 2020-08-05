@@ -30,7 +30,7 @@ const directoryTreeToObj = function(dir, done) {
                     results.push({
                         // type: 'file',
                         name: path.basename(file).slice(0, 8),
-                        description: path.basename(file).slice(9, -4),
+                        description: path.basename(file).substring(9),
                         url: path.basename(file).replace(/ /g, '%20')
                     });
                     if (!--pending)
@@ -56,7 +56,7 @@ const pdf2pic = new PDF2Pic({
   density: 100,           // output pixels per inch
   savename: "untitled",   // output file name
   savedir: "./src/pictures",    // output file location
-  format: "png",          // output file format
+  format: "jpg",          // output file format
   size: 600               // output size in pixels
 });
  

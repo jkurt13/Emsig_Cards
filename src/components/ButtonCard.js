@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import { Modal } from 'react-bootstrap'
+import { Modal, ModalBody, Button } from 'react-bootstrap'
 
 import styled from 'styled-components'
 
-var PrintTemplate = require('react-print')
+import ReactToPrint from "react-to-print";
 
 
 const Sprite = styled.img`
@@ -41,7 +41,7 @@ export default class ButtonCard extends Component {
         const { name, url, description } = this.props
         const buttonTag = url.split("/")[url.split('/').length - 1]
         const imageUrl = `https://github.com/jkurt13/Emsig_Cards/blob/master/src/pictures/${buttonTag}?raw=true`
-
+    
         this.setState({
             buttonTag,
             description,
@@ -79,20 +79,22 @@ export default class ButtonCard extends Component {
                     <h6 className="card-title">{this.state.description.slice(0, -4)}</h6>
                     </div>
                 </Card>
-                {/* <PrintTemplate> */}
                 <Modal show={this.state.show} onHide={()=>this.setState({show: false})} animation={false} size='lg'>
                     <Modal.Header closeButton>
                             <h4>Card Number: {this.state.name}</h4>
-                            
+                            <ReactToPrint 
+                                trigger={() => <Button variant='primary'> Print </Button>}
+                                content={() => this.componentRef}
+                                />
                     </Modal.Header>
-                    <Modal.Body>
-                    <h4>Description: {this.state.description.slice(0, -4)}</h4>                   
-
-                            <img src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
+                    <Modal.Body className='print-container'>
+                        <div ref={el => (this.componentRef = el)}>
+                            <h4>Description: {this.state.description.slice(0, -4)}</h4>                   
+                            <img  src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
+                        </div>
                     </Modal.Body>
                     
                  </Modal>
-                 {/* </PrintTemplate> */}
 
             </div>
         )
