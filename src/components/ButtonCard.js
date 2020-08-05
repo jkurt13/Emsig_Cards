@@ -81,16 +81,16 @@ export default class ButtonCard extends Component {
                 </Card>
                 <Modal show={this.state.show} onHide={()=>this.setState({show: false})} animation={false} size='lg'>
                     <Modal.Header closeButton>
-                            <h4>Card Number: {this.state.name}</h4>
+                            <h4 style={{marginRight: '13em'}}>Card Number: {this.state.name}</h4>
                             <ReactToPrint 
-                                trigger={() => <Button variant='primary'> Print </Button>}
+                                trigger={() => <Button style={{width: '10em'}}variant='secondary'> Print </Button>}
                                 content={() => this.componentRef}
                                 />
                     </Modal.Header>
                     <Modal.Body className='print-container'>
                         <div ref={el => (this.componentRef = el)}>
                             <h4>Description: {this.state.description.slice(0, -4)}</h4>                   
-                            <img  src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
+                            <img src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
                         </div>
                     </Modal.Body>
                     
