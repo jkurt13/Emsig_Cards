@@ -1,6 +1,6 @@
 {
   "name": "emsig-cards",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "engines": {"node": "12.x"},
   "dependencies": {
     "@kenshooui/react-multi-select": "^1.1.6",
