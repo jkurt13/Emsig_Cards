@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { Modal, ModalBody, Button } from 'react-bootstrap'
 
+
 import styled from 'styled-components'
 
 import ReactToPrint from "react-to-print";
@@ -33,26 +34,39 @@ export default class ButtonCard extends Component {
         imageUrl: '',
         toManyRequests: false,
         imageLoading: true,
-        show: false
+        show: false,
+        check: false
+    }
+
+    handleCheck = check => {
+        this.setState(({check}) => ({
+            check: !check
+        }))
+
     }
 
     componentDidMount () {
 
         const { name, url, description } = this.props
+        const check = false
         const buttonTag = url.split("/")[url.split('/').length - 1]
         const imageUrl = `https://github.com/jkurt13/Emsig_Cards/blob/master/src/pictures/${buttonTag}?raw=true`
-    
+         
         this.setState({
             buttonTag,
             description,
             imageUrl,
-            name
+            name,
+            check
         })
     }
     render() {
         return (
+            
             <div className='col-md-3 col-sm-6 mb-5'>
-                <Card className='card' onClick={() =>this.setState({show: true})}>
+                <Card className='card'>
+                <input type='checkbox' onLoad={() => this.setState({check: false})} onClick={this.handleCheck} /> 
+                <div className='clickable' onClick={() =>this.setState({show: true})}>
                 <h5 className="card-header">{this.state.name
                         .toLowerCase()
                         .split(" ")
@@ -76,7 +90,8 @@ export default class ButtonCard extends Component {
                         }
                     />
                 <div className='card-body mx-auto'>
-                    <h6 className="card-title">{this.state.description.slice(0, -4)}</h6>
+                    <h6 className="card-title" >{this.state.description} </h6>
+                    </div>
                     </div>
                 </Card>
                 <Modal show={this.state.show} onHide={()=>this.setState({show: false})} animation={false} size='lg'>
@@ -87,12 +102,12 @@ export default class ButtonCard extends Component {
                                 content={() => this.componentRef}
                                 />
                     </Modal.Header>
-                    <Modal.Body className='print-container'>
+                    <ModalBody className='print-container'>
                         <div ref={el => (this.componentRef = el)}>
-                            <h4>Description: {this.state.description.slice(0, -4)}</h4>                   
+                            <h4>Description: {this.state.description}</h4>                   
                             <img src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
                         </div>
-                    </Modal.Body>
+                    </ModalBody>
                     
                  </Modal>
 

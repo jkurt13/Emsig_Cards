@@ -30,7 +30,7 @@ const directoryTreeToObj = function(dir, done) {
                     results.push({
                         // type: 'file',
                         name: path.basename(file).slice(0, 8),
-                        description: path.basename(file).substring(9),
+                        description: path.basename(file).slice(9, -4),
                         url: path.basename(file).replace(/ /g, '%20')
                     });
                     if (!--pending)
@@ -41,7 +41,7 @@ const directoryTreeToObj = function(dir, done) {
     });
 };
 
-const dirTree = ('./src/pictures')
+const dirTree = ('./src/OGpictures')
 
 const allFiles = directoryTreeToObj(dirTree, function(err, res){
     if(err){
