@@ -1,7 +1,9 @@
 {
   "name": "emsig-cards",
   "version": "1.0.0",
-  "engines": {"node": "12.x"},
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "@kenshooui/react-multi-select": "^1.1.6",
     "@testing-library/jest-dom": "^4.2.4",
@@ -38,4 +40,3 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   }
 }
-
