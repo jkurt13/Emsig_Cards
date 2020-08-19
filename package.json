@@ -1,7 +1,7 @@
 {
   "name": "emsig-cards",
   "version": "0.1.0",
-  "private": true,
+  "engines": {"node": "12.x"},
   "dependencies": {
     "@kenshooui/react-multi-select": "^1.1.6",
     "@testing-library/jest-dom": "^4.2.4",
