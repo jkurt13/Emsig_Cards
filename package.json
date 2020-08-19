@@ -36,6 +36,6 @@
     "client": "cd client && yarn start",
     "server": "nodemon users.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   }
 }
