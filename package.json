@@ -1,7 +1,9 @@
 {
   "name": "emsig-cards",
   "version": "1.0.0",
-  "engines": {"node": "12.x"},
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "@kenshooui/react-multi-select": "^1.1.6",
     "@testing-library/jest-dom": "^4.2.4",
@@ -31,24 +33,9 @@
     "concurrently": "^5.2.0"
   },
   "scripts": {
-    "start": "node app.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "client": "cd client && yarn start",
+    "server": "nodemon users.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   }
 }
