@@ -9,7 +9,7 @@ import ButtonCard from './ButtonCard'
 export default class ButtonList extends Component {
 
     state= {
-        url: "https://emsig-buttons.herokuapp.com/users",
+        url: "https://emsig-cards.herokuapp.com/users",
         button: null,
         search: '',
         cardChecked: {}
