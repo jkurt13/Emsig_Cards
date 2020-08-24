@@ -106,7 +106,7 @@ export default class ButtonCard extends Component {
                     <ModalBody className='print-container'>
                         <div ref={el => (this.componentRef = el)}>
                             <h4>Description: {this.state.description}</h4>                   
-                            <img src={this.state.imageUrl} style={{width: '48em', height:'45em'}}/>
+                            <img src={this.state.imageUrl} style={{width: '48em', height:'45em'}} alt='Loading..'/>
                         </div>
                     </ModalBody>
                     
