@@ -52,7 +52,7 @@ export default class ButtonCard extends Component {
         const buttonTag = url.split("/")[url.split('/').length - 1]
         // https://github.com/jkurt13/emsig_buttons/tree/master/client/src/OGpictures
         // https://github.com/jkurt13/Emsig_Cards/blob/master/src/pictures/${buttonTag}?raw=true
-        const imageUrl = `https://github.com/jkurt13/Emsig_Cards/blob/master/client/src/OGpictures/${buttonTag}?raw=true`
+        const imageUrl = `https://github.com/jkurt13/Emsig_Cards/blob/master/src/OGpictures/${buttonTag}?raw=true`
         this.setState({
             buttonTag,
             description,
