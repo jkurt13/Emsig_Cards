@@ -2,32 +2,46 @@
   "name": "emsig-cards",
   "version": "1.0.0",
   "dependencies": {
-    "@kenshooui/react-multi-select": "^1.1.6",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "list-react-files": "^0.2.0",
     "mdbreact": "^4.27.0",
-    "mssql": "^6.2.0",
     "nodemon": "^2.0.4",
     "pdf2pic": "^1.4.0",
     "react-bootstrap": "^1.2.2",
-    "react-multi-select-component": "^3.0.1",
     "react-print": "^1.3.1",
     "react-router-dom": "^5.2.0",
     "react-to-print": "^2.9.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"
   },
   "scripts": {
-    "client": "cd client && yarn start",
+    "client": "yarn start",
     "server": "nodemon users.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node users.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
