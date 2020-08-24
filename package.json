@@ -26,7 +26,7 @@
     "client": "yarn start",
     "server": "nodemon users.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "react-scripts start",
+    "start": "react-scripts start && node users.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
